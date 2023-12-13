@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device=width, initial-scale=1.0">
+<title>My Family</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Afacad:wght@500&family=Bebas+Neue&family=Gloria+Hallelujah&family=Josefin+Sans:wght@400;500&family=Jost:wght@500&family=League+Spartan:wght@500&family=Love+Ya+Like+A+Sister&family=Poppins:wght@600&family=Rouge+Script&family=Schoolbell&family=Silkscreen&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+:root{
+--pink:#e84393;
+}
+*{
+margin: 0; padding: 0;
+box-sizing: border-box;
+font-family: 'Josefin Sans', sans-serif;
+outline: none;
+text-decoration: none;
+text-transformation: capitalize;
+transition: .2s linear;
+}
+html, body{
+scroll-behavior: smooth;
+scroll-padding-top: 6rem;
+overflow-x: hidden;
+min-height: 100vh;
+background: MistyRose;
+}
+section{
+padding: 2rem 9%;
+}
+.heading{
+text-align: center;
+font-size: 2.5rem;
+color: white;
+padding: 1rem;
+margin: 2rem 0;
+background: #222;
+}
+.heading span{
+color:var(--pink);
+}
+header{
+position: fixed;
+top:0; left:0; right:0;
+background: white;
+box-shadow: 0 5px 10px rgba(0,0,0,.1);
+padding: 0px 7%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+z-index: 1000;
+}
+header .logo{
+font-weight: bolder;
+font-size: 25px;
+color: black;
+}
+header .logo span{
+color:var(--pink);
+}
+header .navbar ul{
+list-style: none;
+}
+header .navbar ul li{
+position: relative;
+float: left;
+}
+header .navbar ul li a{
+font-size: 20px;
+padding: 20px;
+color: #333;
+display: block;
+}
+header .navbar ul li a:hover{
+background: #333;
+color:var(--pink);
+}
+header .navbar ul li ul{
+position: absolute;
+left: 0;
+width: 200px;
+background: #fff;
+display: none;
+}
+header .navbar ul li ul li{
+width: 100%;
+border-top: 1px solid rgba(0,0,0,.1);
+}
+header .navbar ul li ul li ul{
+left: 200px;
+top: 0;
+}
+header .navbar ul li:focus-within > ul,
+header .navbar ul li:hover > ul{
+display: initial;
+}
+#menu-bar{
+display: none;
+}
+header label{
+font-size: 20px;
+color: #333;
+cursor: pointer;
+display: none;
+}
+.active{
+background-color: #F5B7B1;
+}
+.home{
+display: flex;
+align-items: center;
+min-height: 70vh;
+background: url(images/bg/header30.jpg) no-repeat;
+background-size: cover;
+background position: center;
+}
+.home .content{
+max-width: 50rem;
+}
+.home .content h3{
+font-size: 4rem;
+color: #333;
+}
+.home .content span{
+font-size: 1.8rem;
+color:var(--pink);
+padding: 1rem 0;
+line-height: 1.5;
+}
+.home .content p{
+font-size: 1.3rem;
+color: white;
+padding: 1rem 0;
+line-height: 1.5;
+}
+.about .wrapper{
+display: flex;
+width: 100%;
+justify-content: space-around;
+flex-wrap: wrap;
+}
+.card{
+width: 280px;
+height: 360px;
+padding: 2rem 1rem;
+background: #fff;
+position: relative;
+display: flex;
+align-items: flex-end;
+box-shadow: 0px 7px 10px rgba(0,0,0,0.5);
+transition: 0.5s ease-in-out;
+}
+.card:hover{
+transform: translateY(20px);
+}
+.card:before{
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+display: block;
+width: 100%;
+height: 100%;
+background: linear-gradient(to bottom, rgba(0,176,155,0.5), rgba(150,201,61,1));
+z-index: 2;
+transition: 0.5s all;
+opacity: 0;
+}
+.card:hover:before{
+opacity: 1;
+}
+.card img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+position: absolute;
+top: 0;
+left: 0;
+}
+.card .info{
+position: relative;
+z-index: 3;
+color: #fff;
+opacity: 0;
+transform: translateY(30px);
+transition: 0.5s all;
+}
+.card:hover .info{
+opacity: 1;
+transform: translateY(0px);
+}
+.card .info h1{
+margin: 0;
+}
+.card .info p{
+letter-spacing: 1px;
+font-size: 15px;
+margin-top: 8px;
+margin-bottom: 20px;
+}
+.table_responsive{
+max-width: 1350px;
+border: 3px solid #FF1493;
+background-color: #efefef33;
+padding: 15px;
+overflow: auto;
+margin: auto;
+border-radius: 4px;
+}
+table{
+width: 100px;
+font-size: 15px;
+color: #333;
+white-space: nowrap;
+border-collapse: collapse;
+}
+table>th{
+background-color: #00bcd4;
+color: #fff;
+}
+table>th th{
+padding: 15px;
+}
+table th,
+table td{
+border: 1px solid #00000017;
+padding: 10px 15px;
+}
+table>tbody>tr>td>img{
+display: inline-block;
+width: 200px;
+height: 200px;
+object-fit: cover;
+border-radius: 5px;
+border: 4px solid #fff;
+box-shadow: 0 2px 6px #0003;
+}
+table>tbody>tr{
+background-color: #fff;
+transition: 0.3s ease-in-out;
+}
+table>tbody>tr:nth-child(even){
+background-color: rgb(238, 238, 238);
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width:991px){
+html{
+font-size: 55%;
+}
+header{
+padding: 2rem;
+padding: 20px;
+}
+header label{
+display: initial;
+}
+header .navbar{
+position: absolute;
+top:100%; left:0; right:0;
+background: #fff;
+border-top: 1px solid rgba(0,0,0,.1);
+display: none;
+}
+header .navbar ul li{
+width: 100%;
+}
+header .navbar ul li ul{
+position: relative;
+width: 100%;
+}
+header .navbar ul li ul li{
+background: #eee;
+}
+header .navbar ul li ul li ul{
+width: 100%;
+left: 0;
+}
+#menu-bar:checked ~ .navbar{
+display: initial;
+}
+section{
+padding: 2rem;
+}
+.home{
+background-position: left;
+}
+}
+
+@media (max-width:768px){
+.home .content h3{
+font-size: 5rem;
+}
+.home .content span{
+font-size: 2.5rem;
+}
+}
+@media (max-width:450px){
+html{
+font-size: 50%;
+}
+.heading{
+font-size: 3rem;
+}
+}
+</style>
+
+<body>
+<header>
+
+<a href="#" class="logo">Yan<span>Yan</span></a>
+
+<input type="checkbox" id="menu-bar">
+<label for="menu-bar">Menu</label>
+
+<nav class="navbar">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="aboutme.html">About Me</a></li>
+<li><a href="#"class="active">My Family</a></li>
+<li><a href="friends.html">My Friends</a></li>
+<li><a href="hobbies.html">Hobbies +</a>
+<ul>
+<li><a href="arts.html">Arts & Crafts</a></li>
+<li><a href="movies.html">Watching Movies</a></li>
+<li><a href="reading.html">Reading</a></li>
+</ul>
+</li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="socials.html">Socials</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="home" id="home">
+<div class="content">
+<h3>My Family</h3>
+<span>At the core of existence lies the profound meaning of family.</span>
+<p>Where laughter is plentiful, love is endless, and memories are timeless.</p>
+</div>
+</section>
+
+<section class="about" id="about">
+<h1 class="heading"> Meet My <span> Family </span></h1>
+<div class="wrapper">
+<div class="card">
+<img src="images/family/fam8.jpg">
+<div class="info">
+<h1>Mom & Dad</h1>
+<p>This is my parents</p>
+</div>
+</div>
+
+<div class="card">
+<img src="images/family/bro15.jpg">
+<div class="info">
+<h1>Older & Younger brothers</h1>
+<p>This is my brothers</p>
+</div>
+</div>
+
+<div class="card">
+<img src="images/family/sis12.jpg">
+<div class="info">
+<h1>Two Special Daughters</h1>
+<p>This is my little sis and me</p>
+</div>
+</div>
+</div>
+
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<section class="table" id="table">
+<div class="table_responsive">
+<table>
+<thead>
+<tr>
+<th>Num</th>
+<th>Image</th>
+<th>Name</th>
+<th>Birthdate</th>
+<th>Relationship</th>
+<th>Likes</th>
+<th>Dislikes</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>01</td>
+<td>
+<img src="images/family/dad1.jpg" alt="">
+</td>
+<td>Shamsul Zamdi Bin Kassim</td>
+<td>2 January 1969</td>
+<td>Father</td>
+<td>Watching TV & craftworks</td>
+<td>The Government</td>
+</tr>
+
+<tr>
+<td>02</td>
+<td>
+<img src="images/family/mom2.jpg" alt="">
+</td>
+<td>Azlan Binti Zakaria</td>
+<td>3 April 1970</td>
+<td>Mother</td>
+<td>Cooking</td>
+<td>Wasting money</td>
+</tr>
+
+<tr>
+<td>03</td>
+<td>
+<img src="images/family/dad1.jpg" alt="">
+</td>
+<td>Muhammad Zaem Bin<br>Shamsul Zamdi</td>
+<td>15 September 1995</td>
+<td>Eldest Brother</td>
+<td>Cooking & Cleaning</td>
+<td>Someone lazy</td>
+</tr>
+
+<tr>
+<td>04</td>
+<td>
+<img src="images/family/bro12.jpg" alt="">
+</td>
+<td>Muhammad Izzat Bin<br>Shamsul Zamdi</td>
+<td>13 February 1996</td>
+<td>Second Oldest</td>
+<td>Nasi ayam berempah,<br>color white,<br>& fishing</td>
+<td>Kuih muih</td>
+</tr>
+
+<tr>
+<td>05</td>
+<td>
+<img src="images/family/bro5.jpg" alt="">
+</td>
+<td>Muhammaz Azeem Bin<br>Shamsul Zamdi</td>
+<td>21 May 1998</td>
+<td>Third Oldest</td>
+<td>Sport<br>Late night drive,<br>Color blue</td>
+<td>Wasting money,<br>time wasting</td>
+</tr>
+
+<tr>
+<td>06</td>
+<td>
+<img src="images/family/bro 9.jpg" alt="">
+</td>
+<td>Muhammaz Ezam Bin<br>Shamsul Zamdi</td>
+<td>37 June 2000</td>
+<td>Fourth Oldest</td>
+<td>Sketching<br>Drawing<br>Jogging,<br>Color black</td>
+<td>Late night sleep</td>
+</tr>
+
+<tr>
+<td>07</td>
+<td>
+<img src="images/me/me20.jpg" alt="">
+</td>
+<td>Nurul Izyan Binti<br>Shamsul Zamdi</td>
+<td>23 May 2003</td>
+<td>Oldest big sister</td>
+<td>Cooking,<br>Cleaning,<br>Drawing,<br>Spicy Food,<br>Listening music</td>
+<td>Wasting money,<br>Lazy people,<br>disrespectful person</td>
+</tr>
+
+<tr>
+<td>08</td>
+<td>
+<img src="images/family/bro16.jpg" alt="">
+</td>
+<td>Muhammad Muaz Bin<br>Shamsul Zamdi</td>
+<td>2 February 2005</td>
+<td>Third youngest brother</td>
+<td>Cats,<br>Going out,<br>Eating,<br>Ride a motorcycle</td>
+<td>Dogs</td>
+</tr>
+
+<tr>
+<td>09</td>
+<td>
+<img src="images/family/lilbro2.jpg" alt="">
+</td>
+<td>Muhammad Anas Bin<br>Shamsul Zamdi</td>
+<td>28 September 2007</td>
+<td>Second Youngest</td>
+<td>Playing sports,<br>color cyan</td>
+<td>People who like<br>to cheat</td>
+</tr>
+
+<tr>
+<td>10</td>
+<td>
+<img src="images/family/sis3.jpg" alt="">
+</td>
+<td>Nurul Anis Binti<br>Shamsul Zamdi</td>
+<td>14 August 2010</td>
+<td>Last born</td>
+<td>Sky blue,<br>cats,<br>Food</td>
+<td>Traffic Light,<br>Loud people,<br>Walking</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+
+
+
+
+
+</body>
+</html>

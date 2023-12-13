@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device=width, initial-scale=1.0">
+<title>Reading</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Afacad:wght@500&family=Bebas+Neue&family=Gloria+Hallelujah&family=Josefin+Sans:wght@400;500&family=Jost:wght@500&family=League+Spartan:wght@500&family=Love+Ya+Like+A+Sister&family=Poppins:wght@600&family=Rouge+Script&family=Schoolbell&family=Silkscreen&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+:root{
+--pink:#e84393;
+}
+*{
+margin: 0; padding: 0;
+box-sizing: border-box;
+font-family: 'Josefin Sans', sans-serif;
+outline: none;
+text-decoration: none;
+text-transformation: capitalize;
+transition: .2s linear;
+}
+html, body{
+scroll-behavior: smooth;
+scroll-padding-top: 6rem;
+overflow-x: hidden;
+min-height: 100vh;
+background: MistyRose;
+}
+section{
+padding: 2rem 9%;
+}
+.heading{
+text-align: center;
+font-size: 2.5rem;
+color: white;
+padding: 1rem;
+margin: 2rem 0;
+background: #222;
+}
+.heading span{
+color:var(--pink);
+}
+header{
+position: fixed;
+top:0; left:0; right:0;
+background: white;
+box-shadow: 0 5px 10px rgba(0,0,0,.1);
+padding: 0px 7%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+z-index: 1000;
+}
+header .logo{
+font-weight: bolder;
+font-size: 25px;
+color: black;
+}
+header .logo span{
+color:var(--pink);
+}
+header .navbar ul{
+list-style: none;
+}
+header .navbar ul li{
+position: relative;
+float: left;
+}
+header .navbar ul li a{
+font-size: 20px;
+padding: 20px;
+color: #333;
+display: block;
+}
+header .navbar ul li a:hover{
+background: #333;
+color:var(--pink);
+}
+header .navbar ul li ul{
+position: absolute;
+left: 0;
+width: 200px;
+background: #fff;
+display: none;
+}
+header .navbar ul li ul li{
+width: 100%;
+border-top: 1px solid rgba(0,0,0,.1);
+}
+header .navbar ul li ul li ul{
+left: 200px;
+top: 0;
+}
+header .navbar ul li:focus-within > ul,
+header .navbar ul li:hover > ul{
+display: initial;
+}
+#menu-bar{
+display: none;
+}
+header label{
+font-size: 20px;
+color: #333;
+cursor: pointer;
+display: none;
+}
+.active{
+background-color: #F5B7B1;
+}
+.home{
+display: flex;
+align-items: center;
+min-height: 70vh;
+background: url(images/hobbies/bg6.jpg) no-repeat;
+background-size: cover;
+background position: center;
+}
+.home .content{
+max-width: 20rem;
+}
+.home .content h3{
+font-size: 6rem;
+color: #fff;
+font-family: 'Jost', sans-serif;
+}
+.home .content span{
+font-size: 1.8rem;
+color: #333;
+padding: 1rem 0;
+line-height: 1.5;
+}
+.about .wrapper{
+display: flex;
+width: 100%;
+justify-content: space-around;
+flex-wrap: wrap;
+}
+.card{
+width: 280px;
+height: 360px;
+padding: 2rem 1rem;
+background: #fff;
+position: relative;
+display: flex;
+align-items: flex-end;
+box-shadow: 0px 7px 10px rgba(0,0,0,0.5);
+transition: 0.5s ease-in-out;
+}
+.card:hover{
+transform: translateY(20px);
+}
+.card:before{
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+display: block;
+width: 100%;
+height: 100%;
+background: linear-gradient(to bottom, rgba(0,176,155,0.5), rgba(150,201,61,1));
+z-index: 2;
+transition: 0.5s all;
+opacity: 0;
+}
+.card:hover:before{
+opacity: 1;
+}
+.card img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+position: absolute;
+top: 0;
+left: 0;
+}
+.card .info{
+position: relative;
+z-index: 3;
+color: #fff;
+opacity: 0;
+transform: translateY(30px);
+transition: 0.5s all;
+}
+.card:hover .info{
+opacity: 1;
+transform: translateY(0px);
+}
+.card .info p{
+letter-spacing: 1px;
+font-size: 15px;
+margin-top: 8px;
+margin-bottom: 20px;
+}
+.book-content{
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(400px, auto));
+grid-gap: 2rem;
+align-items: center;
+margin-top: 5rem;
+}
+.box{
+background: #ffffff;
+box-shadow: 18px 0px 87px 0px rgb(10 15 70 / 7%);
+border-radius: 12px;
+padding: 45px 45px 45px 45px;
+transition: ease .45s;
+cursor: pointer;
+}
+s. img{
+height: 65px;
+width: 65px;
+background: #f75124;
+padding: 15px;
+border-radius: 50%;
+margin-bottom: 20px;
+}
+.box h3{
+font-size: 24px;
+font-weight: 500;
+margin-bottom: 2px;
+}
+.box p{
+font-size: var(--p-font);
+color: var(--secound-color);
+line-height: 28px;
+}
+.box:hover{
+will-change: transform;
+transform: perspective(1000px) rotateX(4.80deg) rotateY(10.23deg) scale3d(1.05,1.05,1.05);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:991px){
+html{
+font-size: 55%;
+}
+header{
+padding: 2rem;
+padding: 20px;
+}
+header label{
+display: initial;
+}
+header .navbar{
+position: absolute;
+top:100%; left:0; right:0;
+background: #fff;
+border-top: 1px solid rgba(0,0,0,.1);
+display: none;
+}
+header .navbar ul li{
+width: 100%;
+}
+header .navbar ul li ul{
+position: relative;
+width: 100%;
+}
+header .navbar ul li ul li{
+background: #eee;
+}
+header .navbar ul li ul li ul{
+width: 100%;
+left: 0;
+}
+#menu-bar:checked ~ .navbar{
+display: initial;
+}
+section{
+padding: 2rem;
+}
+.home{
+background-position: left;
+}
+}
+
+@media (max-width:768px){
+.home .content h3{
+font-size: 5rem;
+}
+.home .content span{
+font-size: 2.5rem;
+}
+}
+@media (max-width:450px){
+html{
+font-size: 50%;
+}
+.heading{
+font-size: 3rem;
+}
+}
+</style>
+
+
+<body>
+<header>
+
+<a href="#" class="logo">Yan<span>Yan</span></a>
+
+<input type="checkbox" id="menu-bar">
+<label for="menu-bar">Menu</label>
+
+<nav class="navbar">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="aboutme.html">About Me</a></li>
+<li><a href="family.html">My Family</a></li>
+<li><a href="friends.html">My Friends</a></li>
+<li><a href="hobbies.html">Hobbies +</a>
+<ul>
+<li><a href="arts.html">Arts & Crafts</a></li>
+<li><a href="movies.html">Watching Movies</a></li>
+<li><a href="#"class="active">Reading</a></li>
+</ul>
+</li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="socials.html">Socials</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="home" id="home">
+<div class="content">
+<h3>Reading</h3>
+<span>A book is a friend that never leaves your side.</span>
+</div>
+</section>
+
+<section class="about" id="about">
+<h1 class="heading"> Welcome <span> Booklovers! </span></h1>
+<div class="wrapper">
+<div class="card">
+<img src="images/me/me61.jpg">
+<div class="info">
+<p>Books are the mirrors that reflect the diversity of human experience and emotion</p>
+</div>
+</div>
+
+<div class="card">
+<img src="images/me/me58.jpg">
+<div class="info">
+<p>Words are the keys that unlock the doors to understanding, empathy, and personal growth</p>
+</div>
+</div>
+
+<div class="card">
+<img src="images/me/me56.jpg">
+<div class="info">
+<p>Through the pages of a book, we inherit the wisdom of those who came before us</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="book" id="book"
+<h1 class="heading" align="center"><span>Books</span> that i've read</h1>
+<div class="book-content">
+<div class="box">
+<div class="s s-one">
+<img src="images/hobbies/book1.jpg">
+</div>
+<h3>Books 1</h3>
+<p>In the quiet moments with a book, we discover the power of solitude and introspection</p>
+</div>
+
+<div class="box">
+<div class="s s-two">
+<img src="images/hobbies/book2.jpg">
+</div>
+<h3>Books 2</h3>
+<p>The joy of reading is the joy of constant learning, evolving, and embracing the beauty of the written word</p>
+</div>
+
+<div class="box">
+<div class="s s-three">
+<img src="images/hobbies/book3.jpg">
+</div>
+<h3>Book 3</h3>
+<p>Babel, If we were villains, The Secret History & The Picture of Dorian Gray.</p>
+</div>
+
+<div class="box">
+<div class="s s-four">
+<img src="images/hobbies/book4.jpg">
+</div>
+<h3>Book 4</h3>
+<p>1) The Goldfinch by Donna Tartt<br>2) The Penitent by Isaac bashevis Singer<br>3) If we were villains<br>4) The Sound of waves<br>5) Book of Night<br>6) The Portrait of a lady</p>
+</div>
+
+<div class="box">
+<div class="s s-five">
+<img src="images/hobbies/book5.jpg">
+</div>
+<h3>Books 5</h3>
+<p>This is the purple, pink or pastel color books.</p>
+</div>
+
+<div class="box">
+<div class="s s-six">
+<img src="images/hobbies/book6.jpg">
+</div>
+<h3>Books 6</h3>
+<p>All Your Perfects, All The Little Things, Someone I Used To Know, Dating Dr Dil, The Breakup Experiment, In Peace Lies Havoc, Never Never, Gothikana, Elastic Hearts, More Than Words, and Powerless</p>
+</div>
+
+<div class="box">
+<div class="s s-seven">
+<img src="images/hobbies/book7.jpg">
+</div>
+<h3>Books 7</h3>
+<p>I mostly pick up the books that caught my attention like these are.</p>
+</div>
+
+<div class="box">
+<div class="s s-eight">
+<img src="images/hobbies/book8.jpg">
+</div>
+<h3>Books 8</h3>
+<p>This stack of books are a mixed of blue and purple books that I had recently.</p>
+</div>
+
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

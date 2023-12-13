@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device=width, initial-scale=1.0">
+<title>About Me</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Afacad:wght@500&family=Bebas+Neue&family=Gloria+Hallelujah&family=Josefin+Sans:wght@400;500&family=Jost:wght@500&family=League+Spartan:wght@500&family=Love+Ya+Like+A+Sister&family=Poppins:wght@600&family=Rouge+Script&family=Schoolbell&family=Silkscreen&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+:root{
+--pink:#e84393;
+}
+*{
+margin: 0; padding: 0;
+box-sizing: border-box;
+font-family: 'Josefin Sans', sans-serif;
+outline: none;
+text-decoration: none;
+text-transformation: capitalize;
+transition: .2s linear;
+}
+html, body{
+scroll-behavior: smooth;
+scroll-padding-top: 6rem;
+overflow-x: hidden;
+min-height: 100vh;
+background: MistyRose;
+}
+section{
+padding: 2rem 9%;
+}
+.heading{
+text-align: center;
+font-size: 2.5rem;
+color: white;
+padding: 1rem;
+margin: 2rem 0;
+background: #222;
+}
+.heading span{
+color:var(--pink);
+}
+header{
+position: fixed;
+top:0; left:0; right:0;
+background: white;
+box-shadow: 0 5px 10px rgba(0,0,0,.1);
+padding: 0px 7%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+z-index: 1000;
+}
+header .logo{
+font-weight: bolder;
+font-size: 25px;
+color: black;
+}
+header .logo span{
+color:var(--pink);
+}
+header .navbar ul{
+list-style: none;
+}
+header .navbar ul li{
+position: relative;
+float: left;
+}
+header .navbar ul li a{
+font-size: 20px;
+padding: 20px;
+color: #333;
+display: block;
+}
+header .navbar ul li a:hover{
+background: #333;
+color:var(--pink);
+}
+header .navbar ul li ul{
+position: absolute;
+left: 0;
+width: 200px;
+background: #fff;
+display: none;
+}
+header .navbar ul li ul li{
+width: 100%;
+border-top: 1px solid rgba(0,0,0,.1);
+}
+header .navbar ul li ul li ul{
+left: 200px;
+top: 0;
+}
+header .navbar ul li:focus-within > ul,
+header .navbar ul li:hover > ul{
+display: initial;
+}
+#menu-bar{
+display: none;
+}
+header label{
+font-size: 20px;
+color: #333;
+cursor: pointer;
+display: none;
+}
+.active{
+background-color: #F5B7B1;
+}
+.home{
+display: flex;
+align-items: center;
+min-height: 70vh;
+background: url(images/bg/header22.jpg) no-repeat;
+background-size: cover;
+background position: center;
+}
+.home .content{
+max-width: 40rem;
+}
+.home .content h3{
+font-size: 4rem;
+color: #333;
+}
+.home .content span{
+font-size: 1.8rem;
+color:var(--pink);
+padding: 1rem 0;
+line-height: 1.5;
+}
+.home .content p{
+font-size: 1.3rem;
+color: white;
+padding: 1rem 0;
+line-height: 1.5;
+}
+.about .row{
+display: flex;
+align-items: center;
+gap: 2rem;
+flec-wrap: wrap;
+padding: 2rem 0;
+padding-bottom: 3rem;
+}
+.about .row .image-container{
+flex: 1 1 40rem;
+position: relative;
+}
+.about .row .image-container img{
+width: 100%;
+border: 1.5rem solid #fff;
+border-radius: .5rem;
+box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+height: 100%;
+object-fit: cover;
+}
+.about .row .image-container h3{
+position: absolute;
+top: 50%; transform: translateY(-50%);
+font-size: 3rem;
+background: #fff;
+width: 100%;
+padding: 1rem 2rem;
+text-align: center;
+mix-blend-mode: screen;
+}
+.about .row .content{
+flex: 1 1 40rem;
+}
+.about .row .content h3{
+font-size: 3rem;
+color: #333;
+}
+.about .row .content p{
+font-size: 1.5rem;
+color: #555;
+padding: .5rem 0;
+padding-top: 1rem;
+}
+.video .row{
+display: flex;
+align-items: center;
+gap: 2rem;
+flex-wrap: wrap;
+padding: 2rem 0;
+padding-bottom: 2rem;
+}
+.video .row .video-container{
+flex: 1 1 40rem;
+position: relative;
+}
+.video .row .video-container video{
+width: 100%;
+border: 1.5rem solid #fff;
+border-radius: .5rem;
+box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+height: 50%;
+object-fit: cover;
+}
+.like-content{
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(400px, auto));
+grid-gap: 2rem;
+align-items: center;
+margin-top: 5rem;
+}
+.box{
+background: #ffffff;
+box-shadow: 18px 0px 87px 0px rgb(10 15 70 / 7%);
+border-radius: 12px;
+padding: 45px 45px 45px 45px;
+transition: ease .45s;
+cursor: pointer;
+}
+.box h3{
+font-size: 24px;
+font-weight: 500;
+margin-bottom: 2px;
+}
+.box p{
+font-size: var(--p-font);
+color: var(--secound-color);
+line-height: 28px;
+}
+.box:hover{
+will-change: transform;
+transform: perspective(1000px) rotateX(4.80deg) rotateY(10.23deg) scale3d(1.05,1.05,1.05);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:991px){
+html{
+font-size: 55%;
+}
+header{
+padding: 2rem;
+padding: 20px;
+}
+header label{
+display: initial;
+}
+header .navbar{
+position: absolute;
+top:100%; left:0; right:0;
+background: #fff;
+border-top: 1px solid rgba(0,0,0,.1);
+display: none;
+}
+header .navbar ul li{
+width: 100%;
+}
+header .navbar ul li ul{
+position: relative;
+width: 100%;
+}
+header .navbar ul li ul li{
+background: #eee;
+}
+header .navbar ul li ul li ul{
+width: 100%;
+left: 0;
+}
+#menu-bar:checked ~ .navbar{
+display: initial;
+}
+section{
+padding: 2rem;
+}
+.home{
+background-position: left;
+}
+}
+
+@media (max-width:768px){
+.home .content h3{
+font-size: 5rem;
+}
+.home .content span{
+font-size: 2.5rem;
+}
+}
+@media (max-width:450px){
+html{
+font-size: 50%;
+}
+.heading{
+font-size: 3rem;
+}
+}
+</style>
+
+<body>
+<header>
+
+<a href="#" class="logo">Yan<span>Yan</span></a>
+
+<input type="checkbox" id="menu-bar">
+<label for="menu-bar">Menu</label>
+
+<nav class="navbar">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="#"class="active">About Me</a></li>
+<li><a href="family.html">My Family</a></li>
+<li><a href="friends.html">My Friends</a></li>
+<li><a href="hobbies.html">Hobbies +</a>
+<ul>
+<li><a href="arts.html">Arts & Crafts</a></li>
+<li><a href="movies.html">Watching Movies</a></li>
+<li><a href="reading.html">Reading</a></li>
+</ul>
+</li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="socials.html">Socials</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="home" id="home">
+<div class="content">
+<h3>About Me</h3>
+<span>A seeker of knowledge, a weaver of experiences, and a collector of moments.</span>
+<p>A melody of laughter, a harmony of kindness.</p>
+</div>
+</section>
+
+<section class="about" id="about">
+<h1 class="heading"><span> Me & </span> Myself </h1>
+<div class="row">
+<div class="image-container">
+<img src="images/me/me24.jpg">
+<h3>I am Nurul Izyan</h3>
+</div>
+
+<div class="content">
+<h3>Hi, I am Nurul Izyan</h3>
+<p>Thank you for visiting my website page. I am so grateful and enchanted seeing you here. Without further ado, wanna know more about me? Well, my full name is Nurul Izyan Binti Shamsul Zamdi but most people call me "Yan" for short. I am twenty years old and was born at Terengganu and raised at Kelantan.<br>23 May 2003<br>Heigth between 144 - 148cm</p>
+</div>
+</div>
+</section>
+
+<section class="video" id="video">
+<div class="row">
+<div class="video-container">
+<video src="videos/me2.mp4" controls autoplay></video>
+</div>
+</div>
+</section>
+
+<section class="likes" id="likes"
+<h3 align="center">What I Like</h3>
+<h2>The box below is what i like, generally.</h2>
+
+<div class="like-content">
+<div class="box">
+<h3>Cleaning</h3>
+<p>I love cleaning, not because I have an OCD or am a perfectionist. I just love cleaning and it made me and my mind feel so serene.</p>
+</div>
+
+<div class="box">
+<h3>Cooking</h3>
+<p>I started to cook when i was in high school, when I was 14 years old. I started to cook for myself, my family and my friends.</p>
+</div>
+
+<div class="box">
+<h3>Being Alone</h3>
+<p>I love being alone. But that doesn't mean I don't like being with my friends. Sometimes, being alone is good. You can fully relax without the need to engage in conversation or activities. It's a great time to unwind and recharge.</p>
+</div>
+
+<div class="box">
+<h3>Black and Lavender</h3>
+<p>It has been my favourite ever since i was young. It's not just the color, but also in clothes that i wear, accessories, etc that made me feel complete.</p>
+</div>
+</div>
+</section>
+
+<section class="likes" id="likes"
+<h3 align="center">What I Dislike</h3>
+<h2>The box below is what i dislike, generally.</h2>
+
+<div class="like-content">
+<div class="box">
+<h3>Emotional Manipulator</h3>
+<p>Their empathy is a mask, worn only to disguise their true manipulative intent.</p>
+</div>
+
+<div class="box">
+<h3>Dirty Place</h3>
+<p>Filth has claimed its territory, marking every surface with its gritty presence.</p>
+</div>
+
+<div class="box">
+<h3>Making jokes about my height</h3>
+<p>Over the past few years, I'm getting tired of hearing people call me short as a joke. I'm okay if it's a temporarily a joke but if they start calling me that all the time. I don't give a damn anymore. You are not close to me, so don't and shut up.
+</div>
+
+<div class="box">
+<h3>Lazy People</h3>
+<p>It depends 'why' they are lazy. I can only hate this type of people when there's a 'group' of individuals and there will always be that one lazy person who doesn't do anywork.</p>
+</div>
+</div>
+</section>
+
+
+
+</body>
+</html>

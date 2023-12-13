@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device=width, initial-scale=1.0">
+<title>Watching Movies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Afacad:wght@500&family=Bebas+Neue&family=Gloria+Hallelujah&family=Josefin+Sans:wght@400;500&family=Jost:wght@500&family=League+Spartan:wght@500&family=Love+Ya+Like+A+Sister&family=Poppins:wght@600&family=Rouge+Script&family=Schoolbell&family=Silkscreen&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+:root{
+--pink:#e84393;
+}
+*{
+margin: 0; padding: 0;
+box-sizing: border-box;
+font-family: 'Josefin Sans', sans-serif;
+outline: none;
+text-decoration: none;
+text-transformation: capitalize;
+transition: .2s linear;
+}
+html, body{
+scroll-behavior: smooth;
+scroll-padding-top: 6rem;
+overflow-x: hidden;
+min-height: 100vh;
+background: MistyRose;
+}
+section{
+padding: 2rem 9%;
+}
+.heading{
+text-align: center;
+font-size: 2.5rem;
+color: white;
+padding: 1rem;
+margin: 2rem 0;
+background: #222;
+}
+.heading span{
+color:var(--pink);
+}
+header{
+position: fixed;
+top:0; left:0; right:0;
+background: white;
+box-shadow: 0 5px 10px rgba(0,0,0,.1);
+padding: 0px 7%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+z-index: 1000;
+}
+header .logo{
+font-weight: bolder;
+font-size: 25px;
+color: black;
+}
+header .logo span{
+color:var(--pink);
+}
+header .navbar ul{
+list-style: none;
+}
+header .navbar ul li{
+position: relative;
+float: left;
+}
+header .navbar ul li a{
+font-size: 20px;
+padding: 20px;
+color: #333;
+display: block;
+}
+header .navbar ul li a:hover{
+background: #333;
+color:var(--pink);
+}
+header .navbar ul li ul{
+position: absolute;
+left: 0;
+width: 200px;
+background: #fff;
+display: none;
+}
+header .navbar ul li ul li{
+width: 100%;
+border-top: 1px solid rgba(0,0,0,.1);
+}
+header .navbar ul li ul li ul{
+left: 200px;
+top: 0;
+}
+header .navbar ul li:focus-within > ul,
+header .navbar ul li:hover > ul{
+display: initial;
+}
+#menu-bar{
+display: none;
+}
+header label{
+font-size: 20px;
+color: #333;
+cursor: pointer;
+display: none;
+}
+.active{
+background-color: #F5B7B1;
+}
+.home{
+display: flex;
+align-items: center;
+min-height: 70vh;
+background: url(images/hobbies/bg2.jpg) no-repeat;
+background-size: cover;
+background position: center;
+}
+.home .content{
+max-width: 50rem;
+}
+.home .content h3{
+font-size: 5rem;
+color: #333;
+font-family: 'Afacad', sans-serif;
+}
+.portfolio .row{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: row;
+min-height: 70vh;
+}
+.img-card{
+width: 4rem;
+height: 480px;
+margin: 0.5rem;
+overflow: hidden;
+border-radius: 2rem;
+position: relative;
+cursor: pointer;
+background-color: #24242436;
+transition: all 0.75s ease-in-out;
+}
+.img-card.active{
+width: 50vw;
+}
+.img-card:not(.active):hover;{
+transform: scale(1.05);
+box-shadow: 0 24px 32px -12px #10101094;
+}
+.img-card img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.img-card label{
+padding: 1.25rem;
+border: 1px solid #fff3;
+border-radius: 2rem;
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+z-index: 2;
+color: white;
+backdrop-filter: blur(8px) brightness(85%);
+-webkit-backdrop-filter: blur(8px) brightness(85%);
+font-size: 2rem;
+font-weight: 600;
+font-family: 'Josefin Sans', sans-serif;
+word-break: break-all;
+text-transform: uppercase;
+}
+.img-card.active label{
+font-size: 1.30rem;
+bottom: 1rem;
+left: 1rem;
+right: 1rem;
+border-radius: 16px;
+}
+.img-card label span{
+display: block;
+font-size: 0rem;
+text-transform: none;
+padding-top: 0.5;
+font-weight: 400;
+}
+.img-card.active label span{
+font-size: 1.1rem;
+}
+.genre .wrapper{
+display: flex;
+width: 100%;
+justify-content: space-around;
+flex-wrap: wrap;
+}
+.card{
+width: 260px;
+height: 360px;
+padding: 2rem 1rem;
+background: #fff;
+position: relative;
+display: flex;
+align-items: flex-end;
+box-shadow: 0px 7px 10px rgba(0,0,0,0.5);
+transition: 0.5s ease-in-out;
+}
+.card:hover{
+transform: translateY(20px);
+}
+.card:before{
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+display: block;
+width: 100%;
+height: 100%;
+background: linear-gradient(to bottom, rgba(0,176,155,0.5), rgba(150,201,61,1));
+z-index: 2;
+transition: 0.5s all;
+opacity: 0;
+}
+.card:hover:before{
+opacity: 1;
+}
+.card img{
+width: 100%;
+height: 100%;
+object-fit: cover;
+position: absolute;
+top: 0;
+left: 0;
+}
+.card .info{
+position: relative;
+z-index: 3;
+color: #fff;
+opacity: 0;
+transform: translateY(30px);
+transition: 0.5s all;
+}
+.card:hover .info{
+opacity: 1;
+transform: translateY(0px);
+}
+.card .info h1{
+margin: 0;
+}
+.card .info p{
+letter-spacing: 1px;
+font-size: 15px;
+margin-top: 8px;
+margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+@media (max-width:991px){
+html{
+font-size: 55%;
+}
+header{
+padding: 2rem;
+padding: 20px;
+}
+header label{
+display: initial;
+}
+header .navbar{
+position: absolute;
+top:100%; left:0; right:0;
+background: #fff;
+border-top: 1px solid rgba(0,0,0,.1);
+display: none;
+}
+header .navbar ul li{
+width: 100%;
+}
+header .navbar ul li ul{
+position: relative;
+width: 100%;
+}
+header .navbar ul li ul li{
+background: #eee;
+}
+header .navbar ul li ul li ul{
+width: 100%;
+left: 0;
+}
+#menu-bar:checked ~ .navbar{
+display: initial;
+}
+section{
+padding: 2rem;
+}
+.home{
+background-position: left;
+}
+}
+
+@media (max-width:768px){
+.home .content h3{
+font-size: 5rem;
+}
+.home .content span{
+font-size: 2.5rem;
+}
+}
+@media (max-width:450px){
+html{
+font-size: 50%;
+}
+.heading{
+font-size: 3rem;
+}
+}
+</style>
+
+
+<body>
+<header>
+
+<a href="#" class="logo">Yan<span>Yan</span></a>
+
+<input type="checkbox" id="menu-bar">
+<label for="menu-bar">Menu</label>
+
+<nav class="navbar">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="aboutme.html">About Me</a></li>
+<li><a href="family.html">My Family</a></li>
+<li><a href="friends.html">My Friends</a></li>
+<li><a href="hobbies.html">Hobbies +</a>
+<ul>
+<li><a href="arts.html">Arts & Crafts</a></li>
+<li><a href="#"class="active">Watching Movies</a></li>
+<li><a href="reading.html">Reading</a></li>
+</ul>
+</li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="socials.html">Socials</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="home" id="home">
+<div class="content">
+<h3>Watching Movies</h3>
+</div>
+</section>
+
+<section class="portfolio" id="portfolio">
+<h1 class="heading">Genres</h1>
+<div class="row">
+<div class="img-card active">
+<img src="images/hobbies/poster3.jpg" alt=""/>
+<label>
+Thriller
+<span>
+Thriller is a genre of literature. Thrillers are dark, engrossing, and suspenseful plot-driven stories
+</span>
+</label>
+</div>
+
+<div class="img-card">
+<img src="images/hobbies/poster7.jpg" alt="" />
+<label>
+Mystery
+<span>
+Mystery is a fiction genre where the nature of an event, usually a murder or other crime, remains mysterious until the end of the story.
+</span>
+</label>
+</div>
+
+<div class="img-card">
+<img src="images/hobbies/poster1.jpg" alt="" />
+<label>
+Action
+<span>
+Events that typically involve violence and physical feats.
+</span>
+</label>
+</div>
+
+<div class="img-card">
+<img src="images/hobbies/poster4.jpg" alt="" />
+<label>
+True Story
+<span>
+'Based on a true story': The fine line between fact and fiction
+</span>
+</label>
+</div>
+
+<div class="img-card">
+<img src="images/hobbies/poster5.jpg" alt="" />
+<label>
+Animation
+<span>
+Animation is an art form
+</span>
+</label>
+</div>
+</div>
+</section>
+<script src="./card.js"></script>
+
+<section class="genre" id="genre">
+<h1 class="heading"> Thriller</h1>
+<div class="wrapper">
+<div class="card">
+<img src="images/hobbies/thriller1.jpg">
+<div class="info">
+<h1>Barbarian</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/thriller2.jpg">
+<div class="info">
+<h1>Dark Shadows</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/thriller3.jpg">
+<div class="info">
+<h1>Smile</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/thriller4.jpg">
+<div class="info">
+<h1>Cruella</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/thriller5.jpg">
+<div class="info">
+<h1>Hereditary</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/thriller6.jpg">
+<div class="info">
+<h1>Joker</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/thriller7.jpg">
+<div class="info">
+<h1>Escape Room</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/thriller8.jpg">
+<div class="info">
+<h1>Sleepy Hollow</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/thriller9.jpg">
+<div class="info">
+<h1>Oppenheimer</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/thriller10.jpg">
+<div class="info">
+<h1>Fall</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/thriller11.jpg">
+<div class="info">
+<h1>Bullet Train</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/thriller12.jpg">
+<div class="info">
+<h1>Midnight</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/thriller13.jpg">
+<div class="info">
+<h1>Don't Buy The Seller</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/thriller14.jpg">
+<div class="info">
+<h1>Ma</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/thriller15.jpg">
+<div class="info">
+<h1>Now You See Me</h1>
+</div>
+</div>
+</div>
+</section>
+
+<section class="genre" id="genre">
+<h1 class="heading"> Mystery</h1>
+<div class="wrapper">
+<div class="card">
+<img src="images/hobbies/mystery1.jpg">
+<div class="info">
+<h1>The Killer</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/mystery2.jpg">
+<div class="info">
+<h1>Us</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/mystery3.jpg">
+<div class="info">
+<h1>Knives Out</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/mystery4.jpg">
+<div class="info">
+<h1>Gone Girl</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/mystery5.jpg">
+<div class="info">
+<h1>Identity</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/mystery6.jpg">
+<div class="info">
+<h1>Fight Nights At Freddy</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/mystery7.jpg">
+<div class="info">
+<h1>Black Mirror</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/mystery8.jpg">
+<div class="info">
+<h1>Se7en</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/mystery9.jpg">
+<div class="info">
+<h1>Murder on the orient express</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/mystery10.jpg">
+<div class="info">
+<h1>Prisoners</h1>
+</div>
+</div>
+</div>
+</section>
+
+<section class="genre" id="genre">
+<h1 class="heading"> Action</h1>
+<div class="wrapper">
+<div class="card">
+<img src="images/hobbies/action1.jpg">
+<div class="info">
+<h1>Godzilla vs Kong</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/action2.jpg">
+<div class="info">
+<h1>Maze Runner: The Death Cure</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/action3.jpg">
+<div class="info">
+<h1>Hunger Games</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/action4.jpg">
+<div class="info">
+<h1>Maze Runner</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/action5.jpg">
+<div class="info">
+<h1>Maze Runner: Scorch Trials</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/action6.jpg">
+<div class="info">
+<h1>Thor Ragnarok</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/action7.jpg">
+<div class="info">
+<h1>The Karate Kid</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/action9.jpeg">
+<div class="info">
+<h1>The Avengers</h1>
+</div>
+</div>
+</div>
+</section>
+
+<section class="genre" id="genre">
+<h1 class="heading">True Story</h1>
+<div class="wrapper">
+<div class="card">
+<img src="images/hobbies/ts1.jpg">
+<div class="info">
+<h1>3096 Days</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/ts2.jpg">
+<div class="info">
+<h1>The Pianist</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/ts3.jpg">
+<div class="info">
+<h1>Girl In The Basement</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/ts4.jpg">
+<div class="info">
+<h1>Zodiac</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/ts5.jpg">
+<div class="info">
+<h1>127 Hours</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/ts6.jpg">
+<div class="info">
+<h1>Titanic</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/ts7.jpg">
+<div class="info">
+<h1>The Impossible</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/ts8.jpg">
+<div class="info">
+<h1>Thirteen Lives</h1>
+</div>
+</div>
+</div>
+</section>
+
+<section class="genre" id="genre">
+<h1 class="heading">Animation</h1>
+<div class="wrapper">
+<div class="card">
+<img src="images/hobbies/animation1.jpg">
+<div class="info">
+<h1>Frankenweenie</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/animation2.jpg">
+<div class="info">
+<h1>The Nightmare Before Christmas</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/animation3.jpg">
+<div class="info">
+<h1>Mosnter House</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/animation4.jpg">
+<div class="info">
+<h1>Garden of Words</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/animation5.jpg">
+<div class="info">
+<h1>Corpse Bride</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/animation6.jpg">
+<div class="info">
+<h1>Coraline</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/animation7.jpg">
+<div class="info">
+<h1>Brave</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/animation8.jpg">
+<div class="info">
+<h1>Grave of Fireflies</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/animation9.jpg">
+<div class="info">
+<h1>Spirited Away</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/animation10.jpg">
+<div class="info">
+<h1>Paranorman</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/animation11.jpg">
+<div class="info">
+<h1>Elemental</h1>
+</div>
+</div>
+
+<div class="card">
+<img src="images/hobbies/animation12.jpg">
+<div class="info">
+<h1>Monster University</h1>
+</div>
+</div>
+
+</div>
+</section>
+
+
+
+
+
+
+
+
+
+<script>
+imgCard = document.querySelectorAll(".img-card");
+
+imgCard.forEach(element => {
+element.addEventListener("click", function (e) {
+imgCard.forEach(el=> {
+el.classList.remove("active");
+});
+element.classList.add("active");
+})
+
+});
+
+</script>
+
+
+
+
+</body>
+</html>

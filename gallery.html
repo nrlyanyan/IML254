@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device=width, initial-scale=1.0">
+<title>Gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Afacad:wght@500&family=Bebas+Neue&family=Gloria+Hallelujah&family=Josefin+Sans:wght@400;500&family=Jost:wght@500&family=League+Spartan:wght@500&family=Love+Ya+Like+A+Sister&family=Poppins:wght@600&family=Rouge+Script&family=Schoolbell&family=Silkscreen&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+:root{
+--pink:#e84393;
+}
+*{
+margin: 0; padding: 0;
+box-sizing: border-box;
+font-family: 'Josefin Sans', sans-serif;
+outline: none;
+text-decoration: none;
+text-transform: capitalize;
+transition: .2s linear;
+}
+html, body{
+scroll-behavior: smooth;
+scroll-padding-top: 6rem;
+overflow-x: hidden;
+min-height: 100vh;
+background: MistyRose;
+}
+section{
+padding: 2rem 9%;
+}
+.heading{
+text-align: center;
+font-size: 4rem;
+color: white;
+padding: 1rem;
+margin: 2rem 0;
+background: #222;
+}
+.heading span{
+color:var(--pink);
+}
+header{
+position: fixed;
+top:0; left:0; right:0;
+background: white;
+box-shadow: 0 5px 10px rgba(0,0,0,.1);
+padding: 0px 7%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+z-index: 1000;
+}
+header .logo{
+font-weight: bolder;
+font-size: 25px;
+color: black;
+}
+header .logo span{
+color:var(--pink);
+}
+header .navbar ul{
+list-style: none;
+}
+header .navbar ul li{
+position: relative;
+float: left;
+}
+header .navbar ul li a{
+font-size: 20px;
+padding: 20px;
+color: #333;
+display: block;
+}
+header .navbar ul li a:hover{
+background: #333;
+color:var(--pink);
+}
+header .navbar ul li ul{
+position: absolute;
+left: 0;
+width: 200px;
+background: #fff;
+display: none;
+}
+header .navbar ul li ul li{
+width: 100%;
+border-top: 1px solid rgba(0,0,0,.1);
+}
+header .navbar ul li ul li ul{
+left: 200px;
+top: 0;
+}
+header .navbar ul li:focus-within > ul,
+header .navbar ul li:hover > ul{
+display: initial;
+}
+#menu-bar{
+display: none;
+}
+header label{
+font-size: 20px;
+color: #333;
+cursor: pointer;
+display: none;
+}
+.active{
+background-color: #F5B7B1;
+}
+.home{
+display: flex;
+align-items: center;
+min-height: 70vh;
+background: url(images/bg/header21.jpg) no-repeat;
+background-size: cover;
+background position: center;
+}
+.home .content{
+max-width: 40rem;
+}
+.home .content h3{
+font-size: 4rem;
+color: #333;
+}
+.home .content span{
+font-size: 1.8rem;
+color:var(--pink);
+padding: 1rem 0;
+line-height: 1.5;
+}
+.home .content p{
+font-size: 1.3rem;
+color: white;
+padding: 1rem 0;
+line-height: 1.5;
+}
+.row {
+  display: -ms-flexbox; /* IE 10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE 10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE 10 */
+  flex: 25%;
+  padding: 0 5px;
+}
+
+.column img {
+  vertical-align: middle;
+  position: relative;
+  margin-top: 8px;
+  border-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width:991px){
+html{
+font-size: 55%;
+}
+header{
+padding: 2rem;
+padding: 20px;
+}
+header label{
+display: initial;
+}
+header .navbar{
+position: absolute;
+top:100%; left:0; right:0;
+background: #fff;
+border-top: 1px solid rgba(0,0,0,.1);
+display: none;
+}
+header .navbar ul li{
+width: 100%;
+}
+header .navbar ul li ul{
+position: relative;
+width: 100%;
+}
+header .navbar ul li ul li{
+background: #eee;
+}
+header .navbar ul li ul li ul{
+width: 100%;
+left: 0;
+}
+#menu-bar:checked ~ .navbar{
+display: initial;
+}
+section{
+padding: 2rem;
+}
+.home{
+background-position: left;
+}
+}
+@media (max-width:768px){
+.home .content h3{
+font-size: 5rem;
+}
+.home .content span{
+font-size: 2.5rem;
+}
+}
+@media (max-width:450px){
+html{
+font-size: 50%;
+}
+.heading{
+font-size: 3rem;
+}
+}
+</style>
+
+<header>
+
+<a href="#" class="logo">Yan<span>Yan</span></a>
+
+<input type="checkbox" id="menu-bar">
+<label for="menu-bar">Menu</label>
+
+<nav class="navbar">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="aboutme.html">About Me</a></li>
+<li><a href="family.html">My Family</a></li>
+<li><a href="friends.html">My Friends</a></li>
+<li><a href="hobbies.html">Hobbies +</a>
+<ul>
+<li><a href="arts.html">Arts & Crafts</a></li>
+<li><a href="movies.html">Watching Movies</a></li>
+<li><a href="reading.html">Reading</a></li>
+</ul>
+</li>
+<li><a href="#"class="active">Gallery</a></li>
+<li><a href="socials.html">Socials</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="home" id="home">
+<div class="content">
+<h3>Gallery</h3>
+<span>Enter the halls of my digital sanctuary.</span>
+<p>The gallery where hues mingle, forms collide, and artistry springs to life in an awe-inspiring display.</p>
+</div>
+</section>
+<br>
+<br>
+<div class="row"> 
+  <div class="column">
+    <img src="images/me/me19.jpg" style="width:100%">
+    <img src="images/family/fam2.jpg" style="width:100%">
+    <img src="images/family/fam7.jpg" style="width:100%">
+    <img src="images/friends/fr1.jpg" style="width:100%">
+    <img src="images/friends/cm1.jpg" style="width:100%">
+    <img src="images/hobbies/art1.jpg" style="width:100%">
+    <img src="images/hobbies/movie2.jpg" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="images/me/me21.jpg" style="width:100%">
+    <img src="images/family/fam4.jpg" style="width:100%">
+    <img src="images/family/bro8.jpg" style="width:100%">
+    <img src="images/friends/fr4.jpg" style="width:100%">
+    <img src="images/friends/cm6.jpg" style="width:100%">
+    <img src="images/hobbies/art3.jpg" style="width:100%">
+  </div>  
+  <div class="column">
+    <img src="images/me/me26.jpg" style="width:100%">
+    <img src="images/family/fam5.jpg" style="width:100%">
+    <img src="images/family/bro7.jpg" style="width:100%">
+    <img src="images/friends/fr10.jpg" style="width:100%">
+    <img src="images/friends/cm8.jpg" style="width:100%">
+    <img src="images/hobbies/art4.jpg" style="width:100%">
+    <img src="images/hobbies/movie6.jpg" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="images/me/me29.jpg" style="width:100%">
+    <img src="images/family/fam8.jpg" style="width:100%">
+    <img src="images/family/bro6.jpg" style="width:100%">
+    <img src="images/friends/fr13.jpg" style="width:100%">
+    <img src="images/friends/cm4.jpg" style="width:100%">
+    <img src="images/hobbies/art5.jpg" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="images/hobbies/movie4.jpg" style="width:100%">
+    <img src="images/hobbies/movie9.jpg" style="width:100%">
+    <img src="images/me/me37.jpg" style="width:100%">
+    <img src="images/family/dad1.jpg" style="width:100%">
+    <img src="images/family/bro5.jpg" style="width:100%">
+    <img src="images/friends/fr3.jpg" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="images/friends/cm10.jpg" style="width:100%">
+    <img src="images/hobbies/art6.jpg" style="width:100%">
+    <img src="images/hobbies/movie12.jpg" style="width:100%">
+    <img src="images/me/me31.jpg" style="width:100%">
+    <img src="images/family/mom1.jpg" style="width:100%">
+    <img src="images/family/bro4.jpg" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="images/friends/bestie73.jpg" style="width:100%">
+    <img src="images/friends/cm5.jpg" style="width:100%">
+    <img src="images/hobbies/art7.jpg" style="width:100%">
+    <img src="images/hobbies/movie15.jpg" style="width:100%">
+    <img src="images/me/me33.jpg" style="width:100%">
+    <img src="images/family/dad2.jpg" style="width:100%">
+  </div>
+ </div>
+
+
+
+</body>
+</html>

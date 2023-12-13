@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device=width, initial-scale=1.0">
+<title>My Friends</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Afacad:wght@500&family=Bebas+Neue&family=Gloria+Hallelujah&family=Josefin+Sans:wght@400;500&family=Jost:wght@500&family=League+Spartan:wght@500&family=Love+Ya+Like+A+Sister&family=Poppins:wght@600&family=Rouge+Script&family=Schoolbell&family=Silkscreen&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+:root{
+--pink:#e84393;
+}
+*{
+margin: 0; 
+padding: 0;
+user-select: none;
+box-sizing: border-box;
+font-family: 'Josefin Sans', sans-serif;
+outline: none;
+text-decoration: none;
+text-transformation: capitalize;
+transition: .2s linear;
+}
+html{
+scroll-behavior: smooth;
+scroll-padding-top: 6rem;
+overflow-x: hidden;
+background: MistyRose;
+}
+section{
+padding: 2px 9%;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-wrap: wrap;
+transform-style: preserve-3d;
+}
+.heading{
+text-align: center;
+font-size: 2.5rem;
+color: white;
+padding: 1rem;
+margin: 2rem 0;
+background: #222;
+}
+.heading span{
+color:var(--pink);
+}
+header{
+position: fixed;
+top:0; left:0; right:0;
+background: white;
+box-shadow: 0 5px 10px rgba(0,0,0,.1);
+padding: 0px 7%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+z-index: 1000;
+}
+header .logo{
+font-weight: bolder;
+font-size: 25px;
+color: black;
+}
+header .logo span{
+color:var(--pink);
+}
+header .navbar ul{
+list-style: none;
+}
+header .navbar ul li{
+position: relative;
+float: left;
+}
+header .navbar ul li a{
+font-size: 20px;
+padding: 20px;
+color: #333;
+display: block;
+}
+header .navbar ul li a:hover{
+background: #444;
+color:var(--pink);
+}
+header .navbar ul li ul{
+position: absolute;
+left: 0;
+width: 200px;
+background: #fff;
+display: none;
+}
+header .navbar ul li ul li{
+width: 100%;
+border-top: 1px solid rgba(0,0,0,.1);
+}
+header .navbar ul li ul li ul{
+left: 200px;
+top: 0;
+}
+header .navbar ul li:focus-within > ul,
+header .navbar ul li:hover > ul{
+display: initial;
+}
+#menu-bar{
+display: none;
+}
+header label{
+font-size: 20px;
+color: #333;
+cursor: pointer;
+display: none;
+}
+.active{
+background-color: #F5B7B1;
+}
+.home{
+display: flex;
+align-items: center;
+min-height: 70vh;
+background: url(images/bg/header24.jpg) no-repeat;
+background-size: cover;
+background position: center;
+}
+.home .content{
+max-width: 50rem;
+}
+.home .content h3{
+font-size: 4rem;
+color: #333;
+}
+.home .content span{
+font-size: 1.8rem;
+color:var(--pink);
+padding: 1rem 0;
+line-height: 1.5;
+}
+.home .content p{
+font-size: 1.3rem;
+color: white;
+padding: 1rem 0;
+line-height: 1.5;
+}
+section .card{
+position: relative;
+width: 320px;
+height: 320px;
+margin: 30px;
+transform-style: preserve-3d;
+perspective: 1000px;
+}
+section .card .box{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+transform-style: preserve-3d;
+transition: 1s ease;
+}
+section .card:hover .box{
+transform: rotateY(180deg);
+}
+section .card .box .imgBx{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+section .card .box .imgBx img{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+section .card .box .contentBx{
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: #333;
+backface-visibility: hidden;
+display: flex;
+justify-content: center;
+align-items: center;
+transform-style: preserve-3d;
+}
+section .card .box .contentBx div{
+transform-style: preserve-3d;
+padding: 20px;
+background: linear-gradient(45deg, #fe0061, #ffeb3b);
+transform: translateZ(100px);
+}
+section .card .box .contentBx div h2{
+color: #fff;
+font-size: 20px;
+letter-spacing: 1px;
+}
+section .card .box .contentBx div p{
+color: #fff;
+font-size: 16px;
+}
+.wrapper{
+max-width: 1100px;
+}
+.wrapper .gallery{
+display: flex;
+flex-wrap: wrap;
+}
+.gallery span{
+display: flex;
+width: 100%;
+overflow: hidden;
+}
+.gallery .image{
+padding: 7px;
+width: calc(100% / 3);
+}
+.gallery .image img{
+width: 100%;
+vertical-align: middle;
+transition: all 0.3s ease;
+}
+.gallery .image:hover img{
+transform: scale(1.1);
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width:991px){
+html{
+font-size: 55%;
+}
+header{
+padding: 2rem;
+padding: 20px;
+}
+header label{
+display: initial;
+}
+header .navbar{
+position: absolute;
+top:100%; left:0; right:0;
+background: #fff;
+border-top: 1px solid rgba(0,0,0,.1);
+display: none;
+}
+header .navbar ul li{
+width: 100%;
+}
+header .navbar ul li ul{
+position: relative;
+width: 100%;
+}
+header .navbar ul li ul li{
+background: #eee;
+}
+header .navbar ul li ul li ul{
+width: 100%;
+left: 0;
+}
+#menu-bar:checked ~ .navbar{
+display: initial;
+}
+section{
+padding: 2rem;
+}
+.home{
+background-position: left;
+}
+}
+
+@media (max-width:768px){
+.home .content h3{
+font-size: 5rem;
+}
+.home .content span{
+font-size: 2.5rem;
+}
+}
+@media (max-width:450px){
+html{
+font-size: 50%;
+}
+.heading{
+font-size: 3rem;
+}
+}
+</style>
+
+<body>
+<header>
+
+<a href="#" class="logo">Yan<span>Yan</span></a>
+
+<input type="checkbox" id="menu-bar">
+<label for="menu-bar">Menu</label>
+
+<nav class="navbar">
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="aboutme.html">About Me</a></li>
+<li><a href="family.html">My Family</a></li>
+<li><a href="#"class="active">My Friends</a></li>
+<li><a href="hobbies.html">Hobbies +</a>
+<ul>
+<li><a href="arts.html">Arts & Crafts</a></li>
+<li><a href="movies.html">Watching Movies</a></li>
+<li><a href="reading.html">Reading</a></li>
+</ul>
+</li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="socials.html">Socials</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="home" id="home">
+<div class="content">
+<h3>My Friends</h3>
+<span>You're the melody to my symphony of friendship.</span>
+<p>Friendship is the art of being together, even when miles apart.</p>
+</div>
+</section>
+
+<section class="about" id="about">
+<h1 class="heading"> Meet My <span> Childhood Friends </span></h1>
+</section>
+
+<section>
+<div class="card">
+<div class="box">
+<div class="imgBx">
+<img src="images/friends/bestie6.jpg">
+</div>
+<div class="contentBx">
+<div>
+<h2>Nurul Najwa Syuhada</h2>
+<p>aka "Waa" or "Iman". She can be the sweetest girl ever but also can cut you on the throat. Still, she is kind, love jokes, cooking,and she is a wife materia.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="box">
+<div class="imgBx">
+<img src="images/friends/bestie22.jpg">
+</div>
+<div class="contentBx">
+<div>
+<h2>Nur Asma Salsabila</h2>
+<br>
+<p>26 May 2003<br>Likes being delulu<br>Dislikes people are not good at appreciating.<br>Nasi Lemak, Purple, Korean style outfits, travel is her dream.<br>Clumsy girl.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="box">
+<div class="imgBx">
+<img src="images/friends/bestie56.jpg">
+</div>
+<div class="contentBx">
+<div>
+<h2>NurFarisha</h2>
+<br>
+<p>24 Oct 2003,<br>Likes reading & drawing<br>Dislikes rude people<br>Loves black, white & pastel color<br>Quiet with stranger but crazy with friends</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="card">
+<div class="box">
+<div class="imgBx">
+<img src="images/friends/bestie97.jpg">
+</div>
+<div class="contentBx">
+<div>
+<h2>Athirah Haniem</h2>
+<p>2 February 2003.<br>Likes watching movie.<br>Dislike bugs.<br>Fav color blue.<br>An introvert but the most sarcastic person you ever met. Me and her fought all the time but we love each other.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="picture" id="picture">
+<h1 class="heading"><span> Memories </span> Together </h1>
+</section>
+
+<section>
+<div class="wrapper">
+<div class="gallery">
+<div class="image"><span><img src="images/friends/fr1.jpg" alt=""></span></div>
+<div class="image"><span><img src="images/friends/bestie114.jpg" alt=""></span></div>
+<div class="image"><span><img src="images/friends/bestie113.jpg" alt=""></span></div>
+<div class="image"><span><img src="images/friends/fr6.jpg" alt=""></span></div>
+<div class="image"><span><img src="images/friends/fr12.jpg" alt=""></span></div>
+<div class="image"><span><img src="images/friends/bestie109.jpg" alt=""></span></div>
+<div class="image"><span><img src="images/friends/bestie9.jpg" alt=""></span></div>
+<div class="image"><span><img src="images/friends/bestie116.jpg" alt=""></span></div>
+<div class="image"><span><img src="images/friends/bestie121.jpg" alt=""></span></div>
+</div>
+</div>
+</section>
+
+
+
+</body>
+</html>
